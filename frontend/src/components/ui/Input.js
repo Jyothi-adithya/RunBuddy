@@ -1,0 +1,37 @@
+import React from 'react';
+
+const Input = ({
+  id,
+  label,
+  error,
+  className = '',
+  required = false,
+  type = 'text',
+  ...props
+}) => {
+  return (
+    <div className="space-y-2">
+      {label && (
+        <label htmlFor={id} className="block text-sm font-semibold text-ink-700">
+          {label}
+          {required && <span className="ml-1 text-coral-600">*</span>}
+        </label>
+      )}
+      <input
+        id={id}
+        type={type}
+        className={`rb-focus-ring w-full rounded-soft border bg-white/85 px-4 py-3 text-ink-900 placeholder:text-ink-400 transition ${error ? 'border-red-300 focus:ring-red-200' : 'border-white/70'} ${className}`}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
+        {...props}
+      />
+      {error && (
+        <p id={`${id}-error`} className="text-sm font-medium text-red-600">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default Input;

@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
+
+:root {
+  --surface-glass: rgba(255, 255, 255, 0.78);
+  --surface-glass-strong: rgba(255, 255, 255, 0.9);
+  --surface-border: rgba(255, 255, 255, 0.5);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply font-body text-ink-800 bg-app-surface antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight text-ink-900;
+  }
+}
+
+@layer components {
+  .rb-shell {
+    @apply mx-auto w-full max-w-6xl px-4 pb-10 pt-6 md:px-6 lg:px-8;
+  }
+
+  .rb-glass-card {
+    background: var(--surface-glass);
+    border: 1px solid var(--surface-border);
+    @apply rounded-card shadow-glass backdrop-blur-md;
+  }
+
+  .rb-glass-card-strong {
+    background: var(--surface-glass-strong);
+    border: 1px solid var(--surface-border);
+    @apply rounded-card shadow-glass backdrop-blur-md;
+  }
+
+  .rb-focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-2 focus:ring-offset-white;
+  }
+
+  .rb-page-enter {
+    @apply animate-fade-up;
+  }
+}
+
+body {
+  margin: 0;
+}
