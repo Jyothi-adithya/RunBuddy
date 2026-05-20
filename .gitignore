@@ -1,6 +1,0 @@
-backend/src/main/resources/firebase-service-account.json
-backend/target/
-frontend/build/
-frontend/.env.local
-frontend/.env
-node_modules/
