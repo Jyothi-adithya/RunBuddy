@@ -124,3 +124,5 @@ INSERT INTO partner_requests (user_id, date_time, distance, pace, meeting_locati
 (14, '2026-04-14 18:20:00', 10.0, 4.8, ST_PointFromText('POINT(77.5808 12.9265)', 4326), 'Evening tempo from South End Circle', 'OPEN', NOW()),
 (15, '2026-04-15 06:30:00', 5.0, 6.4, ST_PointFromText('POINT(77.5861 12.9242)', 4326), 'Beginner jog around Jayanagar park', 'OPEN', NOW()),
 (16, '2026-04-15 19:00:00', 8.0, 5.7, ST_PointFromText('POINT(77.5832 12.9286)', 4326), 'Steady paced run from 9th Block', 'OPEN', NOW());
+
+

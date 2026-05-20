@@ -8,6 +8,10 @@ import com.runbuddy.repository.ProfileRepository;
 import com.runbuddy.repository.UserRepository;
 import com.runbuddy.service.FcmService;
 import jakarta.validation.Valid;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.PrecisionModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
@@ -26,6 +30,8 @@ import java.util.Map;
 @RequestMapping("/api/profiles")
 @Validated
 public class ProfileController {
+
+    private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory(new PrecisionModel(), 4326);
 
     private final FcmService fcmService;
     private final UserRepository userRepository;
@@ -119,8 +125,8 @@ public class ProfileController {
             profile.setEmergencyContact(stringValue(dto.getEmergencyContact()));
         }
 
-        if (profile.getLocation() == null || profile.getLocation().isBlank()) {
-            profile.setLocation("POINT(77.5946 12.9716)");
+        if (profile.getLocation() == null) {
+            profile.setLocation(defaultLocation());
         }
 
         Profile saved = profileRepository.save(profile);
@@ -164,6 +170,10 @@ public class ProfileController {
         }
         String text = String.valueOf(value).trim();
         return text.isEmpty() ? null : text;
+    }
+
+    private Point defaultLocation() {
+        return GEOMETRY_FACTORY.createPoint(new Coordinate(77.5946, 12.9716));
     }
 
 }

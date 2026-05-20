@@ -1,6 +1,9 @@
 package com.runbuddy.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import org.locationtech.jts.geom.Point;
 
 @Entity
 @Table(name = "profiles")
@@ -22,7 +25,10 @@ public class Profile {
     private Double averagePace;
     private Double preferredDistance;
     private String availability;           // JSON as String
-    private String location;               // MySQL: "POINT(77.5946 12.9716)"
+
+    @JdbcTypeCode(SqlTypes.GEOMETRY)
+    @Column(columnDefinition = "POINT SRID 4326")
+    private Point location;
     private String privacyLevel = "APPROXIMATE";
     private String emergencyContact;
 
@@ -31,7 +37,7 @@ public class Profile {
 
     public Profile(Long id, User user, String fullName, String dateOfBirth, String gender, String profilePhotoUrl,
                    String runningLevel, Double averagePace, Double preferredDistance, String availability,
-                   String location, String privacyLevel, String emergencyContact) {
+                   Point location, String privacyLevel, String emergencyContact) {
         this.id = id;
         this.user = user;
         this.fullName = fullName;
@@ -127,11 +133,11 @@ public class Profile {
         this.availability = availability;
     }
 
-    public String getLocation() {
+    public Point getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Point location) {
         this.location = location;
     }
 

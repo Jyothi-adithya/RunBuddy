@@ -1,0 +1,44 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Backend: Spring Boot",
+			"type": "shell",
+			"command": "mvn",
+			"args": [
+				"-f",
+				"backend\\pom.xml",
+				"spring-boot:run"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Frontend: React dev server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"frontend",
+				"start"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Backend: Spring Boot (run)",
+			"type": "shell",
+			"command": "mvn",
+			"args": [
+				"-f",
+				"backend\\pom.xml",
+				"spring-boot:run"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

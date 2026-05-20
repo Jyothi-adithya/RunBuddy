@@ -1,6 +1,9 @@
 package com.runbuddy.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 
@@ -25,8 +28,9 @@ public class PartnerRequest {
     @Column(nullable = false)
     private Double pace;
 
-    @Column(name = "meeting_location", nullable = false)
-    private String meetingLocation;
+    @JdbcTypeCode(SqlTypes.GEOMETRY)
+    @Column(name = "meeting_location", nullable = false, columnDefinition = "POINT SRID 4326")
+    private Point meetingLocation;
 
     private String notes;
 
@@ -78,11 +82,11 @@ public class PartnerRequest {
         this.pace = pace;
     }
 
-    public String getMeetingLocation() {
+    public Point getMeetingLocation() {
         return meetingLocation;
     }
 
-    public void setMeetingLocation(String meetingLocation) {
+    public void setMeetingLocation(Point meetingLocation) {
         this.meetingLocation = meetingLocation;
     }
 

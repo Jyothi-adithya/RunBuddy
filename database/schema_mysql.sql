@@ -151,3 +151,12 @@ INSERT INTO notifications (user_id, content, is_read, timestamp) VALUES
 (1, 'Jane accepted your running request!', FALSE, NOW() - INTERVAL 10 MINUTE),
 (2, 'Your request to John was accepted. Chat now open!', FALSE, NOW() - INTERVAL 9 MINUTE),
 (3, 'You have a new pending response on your request', TRUE, NOW() - INTERVAL 15 MINUTE);
+
+DESCRIBE users;
+
+SELECT id, username, email, created_at
+FROM users
+ORDER BY created_at DESC
+LIMIT 20;
+
+SHOW TABLES;

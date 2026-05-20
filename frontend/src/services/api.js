@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const normalizeApiBaseUrl = (url) => {
-	const fallback = 'http://localhost:8080/api';
+	const fallback = 'http://localhost:8081/api';
 	if (!url || !url.trim()) {
 		return fallback;
 	}
