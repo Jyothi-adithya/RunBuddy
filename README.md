@@ -27,12 +27,22 @@ RunBuddy is a full-stack app for finding and managing running partners. It inclu
 Backend:
 
 - Create `backend/src/main/resources/firebase-service-account.json`
-- Update `backend/src/main/resources/application.properties` for DB and Firebase settings
+- Configure backend environment variables (do not commit secrets):
+	- `SPRING_DATASOURCE_URL`
+	- `SPRING_DATASOURCE_USERNAME`
+	- `SPRING_DATASOURCE_PASSWORD`
+	- `JWT_SECRET`
+	- `GOOGLE_MAPS_API_KEY`
+	- `FIREBASE_SERVER_KEY`
 
 Frontend:
 
-- Copy `frontend/.env.example` to `frontend/.env`
-- Update environment variables as needed
+- Create `frontend/.env` (not committed)
+- Add required environment variables (do not commit secrets):
+	- `REACT_APP_API_BASE_URL`
+	- `REACT_APP_GOOGLE_MAPS_API_KEY`
+	- `REACT_APP_FIREBASE_CONFIG`
+	- `REACT_APP_FIREBASE_API_KEY`
 
 ## Run locally
 
